@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'factory_girl'
 require 'capybara/rspec'
 
@@ -17,5 +16,11 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     I18n.locale = 'pt-BR'
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
