@@ -4,7 +4,7 @@ describe ContactsController do
   let(:contact) { stub_model(Contact) }
 
   it 'index' do
-    Contact.stub(all: [contact])
+    Contact.stub(paginate: [contact])
     get :index
     expect(assigns :contacts).to eq [contact]
   end

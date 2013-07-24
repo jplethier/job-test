@@ -13,6 +13,9 @@ gem 'haml-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+#pagination
+gem 'will_paginate'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
