@@ -1,7 +1,8 @@
 class ContactsController < ApplicationController
   before_filter :find_contact, only: [:show, :edit, :update]
+
   def index
-    @contacts = Contact.all
+    @contacts = Contact.paginate(page: params[:page] || 1, per_page: params[:per_page] || 20)
   end
 
   def new
