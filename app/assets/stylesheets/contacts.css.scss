@@ -7,3 +7,15 @@
     margin-left: 10px;
   }
 }
+
+form {
+  .field {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  label {
+    display: block;
+  }
+}
