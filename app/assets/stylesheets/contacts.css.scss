@@ -1,0 +1,21 @@
+.list {
+  font-size: 12pt;
+  margin-top: 30px;
+
+  a {
+    color: $black;
+    margin-left: 10px;
+  }
+}
+
+form {
+  .field {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  label {
+    display: block;
+  }
+}
