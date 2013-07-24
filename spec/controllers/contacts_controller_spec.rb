@@ -21,6 +21,12 @@ describe ContactsController do
     expect(assigns :contact).to eq contact
   end
 
+  it 'edit' do
+    Contact.stub(find: contact)
+    get :edit, { id: contact.id }
+    expect(assigns :contact).to eq contact
+  end
+
   describe 'create' do
     let(:params)  { { contact: { first_name: 'f_name', last_name: 'l_name', email: 'email@a.com', phone: '123' } } }
 
@@ -45,6 +51,34 @@ describe ContactsController do
       it 'renders the new page' do
         post :create, params
         expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe 'update' do
+    let(:params)  { { id: contact.id, contact: { first_name: 'f_name_changed', last_name: 'l_name', email: 'email@a.com', phone: '123' } } }
+
+    context 'successfully' do
+      before do
+        Contact.stub(find: contact)
+        contact.stub(update_attributes: true)
+      end
+
+      it 'redirects to the contacts index page' do
+        put :update, params
+        expect(response).to redirect_to(contacts_path)
+      end
+    end
+
+    context 'unsuccessfully' do
+      before do
+        Contact.stub(find: contact)
+        contact.stub(update_attributes: false)
+      end
+
+      it 'renders the new page' do
+        put :update, params
+        expect(response).to render_template(:edit)
       end
     end
   end

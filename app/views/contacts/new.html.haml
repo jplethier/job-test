@@ -1,16 +1,2 @@
-%h1 Contacts#new
-= form_for @contact do |f|
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :phone
-    = f.text_field :phone
-
-  = f.submit 'Confirm'
+%h1 New Contact
+= render 'form', contact: @contact
